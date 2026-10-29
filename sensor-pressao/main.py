@@ -16,7 +16,7 @@ from medidor_pressao.app import executar_aplicacao
 def criar_argument_parser() -> argparse.ArgumentParser:
     """Cria e configura o analisador de argumentos de linha de comando."""
     parser = argparse.ArgumentParser(
-        description="Sistema de Monitoramento e Aquisição de Dados de Pressão (Arduino + Python).",
+        description="Sistema de Monitoramento e Aquisição de Dados de Pressão (ESP32 + Python).",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
 
@@ -24,7 +24,7 @@ def criar_argument_parser() -> argparse.ArgumentParser:
         "-p", "--porta",
         type=str,
         default="/dev/ttyACM0",
-        help="Porta serial onde o Arduino está conectado (ex: /dev/ttyACM0, /dev/ttyUSB0, COM3)",
+        help="Porta serial onde o ESP32 está conectado (ex: /dev/ttyACM0, /dev/ttyUSB0, COM3)",
     )
 
     parser.add_argument(

@@ -12,9 +12,8 @@
 // CONFIGURAÇÕES DA REDE WI-FI (MODO ACCESS POINT)
 // ==========================================
 const char* ssid = "sensor-bmp280";
-const char* password = "teste123"; 
+const char* password = ""; 
 
-// Inicializa o Servidor Web na porta 80
 WebServer server(80);
 
 // Configura o LCD (Endereço 0x27) e o Sensor BMP280
@@ -70,7 +69,7 @@ void setup() {
 
   // 3. Cria a própria rede Wi-Fi
   WiFi.softAP(ssid, password);
-  IPAddress IP = WiFi.softAPIP(); // Geralmente é 192.168.4.1
+  IPAddress IP = WiFi.softAPIP();
   
   Serial.println("\n--- Rede Wi-Fi Criada ---");
   Serial.print("Nome da Rede: "); Serial.println(ssid);

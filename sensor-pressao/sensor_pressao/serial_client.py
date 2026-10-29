@@ -1,6 +1,4 @@
-"""
-Módulo para comunicação com a porta serial (Arduino).
-"""
+"""Módulo para comunicação com a porta serial do ESP32."""
 
 from typing import Optional, List, Tuple
 import time
@@ -13,7 +11,7 @@ from medidor_pressao.models import LeituraPressao
 
 
 class SerialReader:
-    """Gerencia a comunicação serial com a placa Arduino."""
+    """Gerencia a comunicação serial com a placa ESP32."""
 
     def __init__(self, porta: str = "/dev/ttyACM0", baud_rate: int = 9600, timeout: float = 1.0):
         self.porta = porta
@@ -28,14 +26,14 @@ class SerialReader:
         return [(p.device, p.description, p.hwid) for p in portas]
 
     def abrir(self) -> None:
-        """Abre a conexão com a porta serial e aguarda a reinicialização do Arduino."""
+        """Abre a conexão serial e aguarda a reinicialização do ESP32."""
         if self._serial is not None and self._serial.is_open:
             return
 
         try:
-            print(f"Conectando ao Arduino em {self.porta} (baud rate: {self.baud_rate})...")
+            print(f"Conectando ao ESP32 em {self.porta} (baud rate: {self.baud_rate})...")
             self._serial = serial.Serial(self.porta, self.baud_rate, timeout=self.timeout)
-            # O Arduino reinicia ao abrir a conexão serial; aguarda a estabilização
+            # O ESP32 reinicia ao abrir a conexão serial; aguarda a estabilização.
             time.sleep(2.0)
             self._serial.reset_input_buffer()
             print("Conexão serial estabelecida com sucesso.")

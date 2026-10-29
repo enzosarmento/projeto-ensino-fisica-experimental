@@ -1,5 +1,5 @@
 """
-Modelo de dados para leituras de pressão enviadas pelo sensor/Arduino.
+Modelo de dados para leituras de pressão enviadas pelo sensor/ESP32.
 """
 
 from dataclasses import dataclass
@@ -19,7 +19,7 @@ class LeituraPressao:
     def from_csv_line(cls, linha: str, horario: Optional[str] = None) -> Optional["LeituraPressao"]:
         """
         Converte uma linha de texto no formato 'tensao,pressao_psi,pressao_bar' em um objeto LeituraPressao.
-        Retorna None se a linha for inválida ou uma mensagem de texto do Arduino.
+        Retorna None se a linha for inválida ou uma mensagem de texto do ESP32.
         """
         if not linha:
             return None
